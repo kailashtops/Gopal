@@ -1,0 +1,8 @@
+Notes
+1.Global.asax- it's an application level configuration file that contains code for responding to application-level events raised by ASP.NET or by HTTP modules.
+2.Web.config- it's an application level configuration file that contains settings and configuration information for the web application.
+it can have multiple web.config files in different folders, and the settings in the web.config file will override the settings in the parent folder's web.config file.
+HttpGet Action- It use to return view
+HttpPost- it cannot return the view 
+ViewBag- Transfer data from controller to view
+TempData- It use to transfer the value from one action method to another action method in same controller
