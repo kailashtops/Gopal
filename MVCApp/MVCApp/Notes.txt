@@ -6,3 +6,18 @@ HttpGet Action- It use to return view
 HttpPost- it cannot return the view 
 ViewBag- Transfer data from controller to view
 TempData- It use to transfer the value from one action method to another action method in same controller
+
+StateManagement - It's a technique used to maintain the state of an application across multiple requests. In ASP.NET MVC,
+state management can be achieved using various methods such as ViewState, Session, Cookies, and Query Strings.
+default Timeout of session is 20 minutes. You can change it in web.config file.
+Types of State Management in ASP.NET MVC:
+There are two types of state management in ASP.NET MVC:
+1. Client-Side State Management: In this type of state management, the state of the application is maintained on the client-side, typically using cookies or query strings. This approach is suitable for small amounts of data that do not require high security.
+2. Server-Side State Management: In this type of state management, the state of the application is maintained on the server-side, typically using session variables or database storage. This approach is suitable for larger amounts of data that require high security and persistence across multiple requests.
+
+Cookies - Cookies are small pieces of data that are stored on the client-side and can be used to maintain state across multiple
+requests. Cookies can be set and retrieved using the HttpCookie class in ASP.NET MVC.
+Types of Cookies:
+There are two types of cookies in ASP.NET MVC:
+1. Session Cookies: These cookies are temporary and are deleted when the user closes the browser. They are used to store information that is only needed for the duration of a single session.
+2. Persistent Cookies: These cookies are stored on the client-side for a specified period of time and can be used to maintain state across multiple sessions. They are used to store information that needs to persist across multiple requests, such as user preferences or login credentials.

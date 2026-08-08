@@ -86,5 +86,32 @@ namespace MVCApp.DAL
                 con.Close();
             }
         }
+        public void Register(UserRegistration userRegistration)
+        {
+            using (SqlConnection con = new SqlConnection(conn))
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO Tbl_reg (email, username, password, address) VALUES (@Email, @Username, @Password, @Address)", con);
+                cmd.Parameters.AddWithValue("@UserName", userRegistration.UserName);
+                cmd.Parameters.AddWithValue("@Password", userRegistration.Password);
+                cmd.Parameters.AddWithValue("@Email", userRegistration.Email);
+                cmd.Parameters.AddWithValue("@Address", userRegistration.Address);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+        public bool Login(UserLogin userLogin)
+        {
+            using (SqlConnection con = new SqlConnection(conn))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Tbl_reg WHERE username=@UserName AND password=@Password", con);
+                cmd.Parameters.AddWithValue("@UserName", userLogin.UserName);
+                cmd.Parameters.AddWithValue("@Password", userLogin.Password);
+                con.Open();
+                int count = (int)cmd.ExecuteScalar();
+                con.Close();
+                return count > 0;
+            }
+        }
     }
 }

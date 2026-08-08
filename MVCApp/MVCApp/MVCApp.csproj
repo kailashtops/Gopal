@@ -129,6 +129,7 @@
     </Compile>
     <Compile Include="Models\StData.cs" />
     <Compile Include="Models\StudentInfo.cs" />
+    <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +192,8 @@
     <Content Include="Views\StudentData\Index.cshtml" />
     <Content Include="Views\StudentData\Edit.cshtml" />
     <Content Include="Views\StudentData\Details.cshtml" />
+    <Content Include="Views\StudentData\Register.cshtml" />
+    <Content Include="Views\StudentData\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

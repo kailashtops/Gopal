@@ -14,8 +14,17 @@ namespace MVCApp.Controllers
         DBOperation dbOperation = new DBOperation();
         public ActionResult Index()
         {
-            List<StData> studentList = dbOperation.GetStudentList();
-            return View(studentList);
+            if(Session["UserName"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                ViewBag.UserName = Session["UserName"].ToString();
+                List<StData> studentList = dbOperation.GetStudentList();
+                return View(studentList);
+            }
+            
         }
         public ActionResult Create() { 
           return View();
@@ -44,6 +53,37 @@ namespace MVCApp.Controllers
         public ActionResult Details(int id) { 
           StData stData = dbOperation.GetById(id);
           return View(stData);
+        }
+        public ActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Register(UserRegistration userRegistration)
+        {
+            dbOperation.Register(userRegistration);
+            return RedirectToAction("Login");
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(UserLogin userLogin)
+        {
+            bool isValidUser = dbOperation.Login(userLogin);
+            if (isValidUser)
+            {
+               Session["UserName"] = userLogin.UserName;
+                Session.Timeout= 30; // Set session timeout to 30 minutes
+                return RedirectToAction("Index", "StudentData");
+            }
+            else
+            {
+                // Show an error message
+                ViewBag.ErrorMessage = "Invalid username or password";
+                return View();
+            }
         }
     }
 }
