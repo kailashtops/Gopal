@@ -8,10 +8,10 @@
 <h2>Login</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>UserLogin</h4>
         <hr />
@@ -47,3 +47,19 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script type="text/javascript">
+    document.getElementById("UserName").addEventListener("blur", function () {
+        var username = $(this).val();
+        $.ajax({
+            url: '@Url.Action("GetUserPassword", "StudentData")',
+            type: 'GET',
+            
+            success: function (response) {
+                if (response.success) {
+                    $("#Password").val(response.password);
+                }
+            }
+        })
+
+    });
+</script>
