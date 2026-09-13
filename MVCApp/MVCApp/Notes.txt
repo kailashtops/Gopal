@@ -21,3 +21,8 @@ Types of Cookies:
 There are two types of cookies in ASP.NET MVC:
 1. Session Cookies: These cookies are temporary and are deleted when the user closes the browser. They are used to store information that is only needed for the duration of a single session.
 2. Persistent Cookies: These cookies are stored on the client-side for a specified period of time and can be used to maintain state across multiple sessions. They are used to store information that needs to persist across multiple requests, such as user preferences or login credentials.
+
+Vlidation:
+Serverside: validate the model property
+Client side: using javascript 
+
